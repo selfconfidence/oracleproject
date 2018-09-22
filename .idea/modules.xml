@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jpa-demo/jpa-demo.iml" filepath="$PROJECT_DIR$/jpa-demo/jpa-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" filepath="$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oracleproject.iml" filepath="$PROJECT_DIR$/oracleproject.iml" />
+    </modules>
+  </component>
+</project>

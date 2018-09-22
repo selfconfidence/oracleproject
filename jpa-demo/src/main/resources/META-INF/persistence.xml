@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <!-- jpa的基本配置信息
+    transaction-type: JTA  分布式事务管理
+                      RESOURCE_LOCAL   本地事务
+    -->
+
+    <persistence-unit name="Jpa" transaction-type="RESOURCE_LOCAL">
+        <!--配置JPA规范的服务提供商-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--配置数据库连接信息等-->
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ssh"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="12345"/>
+
+
+            <!--jpa提供者的可选配置：我们的JPA规范的提供者为hibernate，所以jpa的核心配置中兼容hibernate的配置 -->
+            <property name="hibernate.show_sql" value="true"/><!--显示Sql语句-->
+            <property name="hibernate.format_sql" value="true"/><!--格式化Sql语句-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!--三种参数类型     create: 每次执行先删除已存在的表,然后再次操作
+                               update: 每次执行如果对应的没有表就会创建一个表
+                               none  : 不会创建表,如果没有表报错,个人建议使用update
+            -->
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
