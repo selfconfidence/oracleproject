@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/jpa
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    <!--Spring整合传统JPA操作 JPA实现(Hibernate)-->
+
+    <context:property-placeholder location="oracleDataConnection.properties"></context:property-placeholder>
+    <!--1,配置DataSource (这里测试为Oracle)数据库连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${oracleDrivers}"></property>
+        <property name="jdbcUrl" value="${oracleUrl}"></property>
+        <property name="user" value="${oracleUser}"></property>
+        <property name="password" value="${oraclePassword}"></property>
+    </bean>
+   <!--2 ,配置实体类管理工厂,entitymanagerFactory-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!--配置数据库连接池-->
+       <property name="dataSource" ref="dataSource"/>
+        <!--配置扫描包实体类-->
+        <property name="packagesToScan" value="com.out.domain"/>
+        <!--注入Hibernate对Jpa的实现-->
+        <property name="persistenceProvider" ref="hibernateId" />
+        <!--Jpa的供应商适配器-->
+        <property name="jpaVendorAdapter">
+          <bean  class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
+              <!--在适配器中配置对应的一些连接信息   是否自动创建(如果没有必须指定否则就报错了 ) true就是原生配置(update)-->
+              <property name="generateDdl" value="false"/>
+              <!--选型数据库,看源码都是有枚举的,MySQL,SQLService都是有的-->
+              <property name="database" value="ORACLE"/>
+              <!--是否显示方言-->
+              <property name="showSql" value="true"/>
+
+              <!--指定数据库平台-->
+           <property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect"></property>
+          </bean>
+        </property>
+        <!--配置JPA方言信息,源码也是有的,Mysql的Oracle的都是可见的-->
+        <property name="jpaDialect" >
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
+        </property>
+        <property name="jpaProperties">
+        <props>
+            <prop key="hibernate.hbm2ddl.auto" >update</prop>
+
+        </props>
+
+        </property>
+    </bean>
+    <!--这里声明Hibernate  可以直接配置到 persistenceProvider 中,但是为了清楚没有这么做-->
+   <bean id="hibernateId" class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
+     <!--3,配置事务管理器       事务管理器是不同的此时注意-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!--开始整合操作  这里的扫描包是扫描DAO层,不需要写实现类就可以完成操作数据库操作-->
+    <jpa:repositories base-package="com.out.dao"
+                      transaction-manager-ref="transactionManager"
+                         entity-manager-factory-ref="entityManagerFactory" />
+    <!--装配其它类容器-->
+    <context:component-scan base-package="com.out"/>
+
+    <!--开启声明事务,当然你可以使用指定的切面进行控制事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
