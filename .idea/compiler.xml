@@ -6,13 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="day-3" />
+        <module name="jpa-3" />
         <module name="jpa-demo" />
+        <module name="spring-mybatis" />
+        <module name="springboot-quick" />
         <module name="springdatejpa-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="day-3" target="1.5" />
+      <module name="jpa-3" target="1.5" />
       <module name="jpa-demo" target="1.5" />
-      <module name="springdatejpa-demo" target="1.5" />
+      <module name="spring-mybatis" target="1.8" />
+      <module name="springboot-quick" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

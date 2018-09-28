@@ -5,6 +5,10 @@
       <list>
         <option value="$PROJECT_DIR$/jpa-demo/pom.xml" />
         <option value="$PROJECT_DIR$/springdatejpa-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/jpa-3/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-quick/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/day-3/pom.xml" />
       </list>
     </option>
   </component>

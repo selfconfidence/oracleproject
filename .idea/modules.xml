@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/day-3/day-3.iml" filepath="$PROJECT_DIR$/day-3/day-3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jpa-3/jpa-3.iml" filepath="$PROJECT_DIR$/jpa-3/jpa-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jpa-demo/jpa-demo.iml" filepath="$PROJECT_DIR$/jpa-demo/jpa-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" filepath="$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/oracleproject.iml" filepath="$PROJECT_DIR$/oracleproject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springdatejpa-demo/springdatejpa-demo.iml" filepath="$PROJECT_DIR$/springdatejpa-demo/springdatejpa-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-quick/springboot-quick.iml" filepath="$PROJECT_DIR$/springboot-quick/springboot-quick.iml" />
     </modules>
   </component>
 </project>
