@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shiro.dao.UserMapper">
+<resultMap id="userMapping" type="com.shiro.pojo.User">
+<id column="id" property="id" ></id>
+  <result column="account" property="account"></result>
+  <result column="name" property="name"></result>
+  <result column="password" property="password"></result>
+
+</resultMap>
+
+    <select id="findOne" parameterType="java.lang.String" resultMap="userMapping"  >
+        select * from sys_user WHERE name = #{name}
+    </select>
+</mapper>

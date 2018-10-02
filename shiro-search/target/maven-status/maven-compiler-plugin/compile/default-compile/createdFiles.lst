@@ -1,0 +1,7 @@
+com\shiro\controller\UserController.class
+com\shiro\pojo\UsersRealm.class
+com\shiro\pojo\UserRealm.class
+com\shiro\dao\ItemMapper.class
+com\shiro\pojo\User.class
+com\shiro\service\impl\ItemServiceImpl.class
+com\shiro\dao\UserMapper.class

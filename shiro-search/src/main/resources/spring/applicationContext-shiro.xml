@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- <bean id="md5CredentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean>
+
+     <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+         <property name="dataSource" ref="dataSource"></property>
+         <property name="credentialsMatcher" ref="md5CredentialsMatcher"></property>
+         <property name="permissionsLookupEnabled" value="true"></property>
+         <property name="authenticationQuery" value="select password from sys_user where name = ?"> </property>
+     </bean>-->
+    <bean id="jdbcRealm" class="com.shiro.pojo.UserRealm" depends-on="userMapper">
+        <!--清除缓存信息-->
+        <property name="cachingEnabled" value="true"></property>
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="MD5"></property>
+                <property name="hashIterations" value="1024"></property>
+            </bean>
+
+        </property>
+    </bean>
+    <bean id="persionRealm" class="com.shiro.pojo.PersionRealm">
+        <property name="cachingEnabled" value="true"></property>
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="SHA1"></property>
+               <property name="hashIterations" value="1024"></property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!--配置Shiro的权限控制管理  这个类基于web.xml中配置的拦截类-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--注入安全管理器-->
+        <property name="securityManager" ref="securityManager"></property>
+        <!-- 注入系统的登录访问路径 -->
+        <!-- 跳转到登录页面 -->
+        <property name="loginUrl" value="login.html"></property>
+        <!--成功页面-->
+        <property name="successUrl" value="search.html"></property>
+        <!--权限不足的提示页面-->
+        <property name="unauthorizedUrl" value="500.html"></property>
+        <!-- 基于web.html中配置基于URL的拦截规则
+        <property name="filters">
+            <map>
+                <entry key="authc">
+                    <bean class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter"></bean>
+                </entry>
+            </map>
+        </property>-->
+        <!--
+            URL路径自上而下进行匹配
+         -->
+        <!--
+            anon过滤器处理原则 ：随便访问
+            authc需要进行权限认证
+         -->
+        <property name="filterChainDefinitions">
+            <!-- 就是需要验证的地址的列表，常用的包含anon、authc、perms、roles、user、logout。 -->
+            <!--anon 代表可以进行匿名访问
+                authc 代表必须登陆之后才可以进行访问
+                加载是由上到下是有优先级的  拦截所有的一定放在最后一个 否则走的就是拦截所有.
+                logout 退出登录的路径方式
+                -->
+            <value>
+                /css/** = anon
+                /fonts/** = anon
+                /img/** = anon
+                /js/** = anon
+                /plugins/** = anon
+                /500.html = anon
+                /login.html = anon
+                /user/login.do = anon
+                /user/logout = logout
+                /success.jsp = roles[managers,admins]
+                /defeated.jsp = user
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <!--声明多个Realm集体认证管理者-->
+    <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <!--默认执行的策略,只要有一个正确,那么就返回所有的成功验证-->
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
+
+        </property>
+         <!--配置多个Realm
+        <property name="realms">
+            <list>
+                <ref bean="jdbcRealm"></ref>
+                <ref bean="persionRealm"></ref>
+            </list>
+        </property>
+        -->
+    </bean>
+    <!--定义默认会话管理者
+    <bean id="sessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
+
+
+       Shiro默认会使用Servlet容器的Session,可通过sessionMode属性来指定使用Shiro原生Session
+        设置会话session失效时间   源代码中是有默认值的
+        <property name="globalSessionTimeout" value="60000"></property>
+       删除失效的session
+        <property name="deleteInvalidSessions" value="true"></property>
+    </bean>-->
+    <!--定义安全管理类-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--注入Realm的多个身份验证管理   -->
+        <property name="authenticator" ref="authenticator"></property>
+
+        <property name="realms">
+            <list>
+                <ref bean="jdbcRealm"></ref>
+                <ref bean="persionRealm"></ref>
+            </list>
+        </property>
+        <!--注入缓存管理器-->
+        <property name="cacheManager" ref="cacheManager"></property>
+        <!--创建会话管理者 虽然过时了但是蛮好用的,这是Shiro原生的方式-->
+        <property name="sessionMode" value="native"></property>
+    </bean>
+    <!--注册缓存管理器-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager">
+    </bean>
+    <!--配置Realm-->
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+    <!-- 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 -->
+    <!-- 配置以下两个bean即可实现此功能 -->
+    <!-- Enable Shiro Annotations for Spring-configured beans. Only run after the lifecycleBeanProcessor has run -->
+    <!-- 由于本例中并未使用Shiro注解,故注释掉这两个bean(个人觉得将权限通过注解的方式硬编码在程序中,查看起来不是很方便,没必要使用) -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <aop:config proxy-target-class="true"/>
+
+
+</beans>

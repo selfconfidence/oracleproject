@@ -7,8 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/jpa-demo/jpa-demo.iml" filepath="$PROJECT_DIR$/jpa-demo/jpa-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" filepath="$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/oracleproject.iml" filepath="$PROJECT_DIR$/oracleproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quartz-quick/quartz-quick.iml" filepath="$PROJECT_DIR$/quartz-quick/quartz-quick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-search/shiro-search.iml" filepath="$PROJECT_DIR$/shiro-search/shiro-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-quick/springboot-quick.iml" filepath="$PROJECT_DIR$/springboot-quick/springboot-quick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/startboot-day1/startboot-day1.iml" filepath="$PROJECT_DIR$/startboot-day1/startboot-day1.iml" />
     </modules>
   </component>
 </project>

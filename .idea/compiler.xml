@@ -9,17 +9,23 @@
         <module name="day-3" />
         <module name="jpa-3" />
         <module name="jpa-demo" />
+        <module name="quartz-quick" />
+        <module name="shiro-search" />
         <module name="spring-mybatis" />
         <module name="springboot-quick" />
         <module name="springdatejpa-demo" />
+        <module name="startboot-day1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="day-3" target="1.5" />
       <module name="jpa-3" target="1.5" />
       <module name="jpa-demo" target="1.5" />
+      <module name="quartz-quick" target="1.5" />
+      <module name="shiro-search" target="1.5" />
       <module name="spring-mybatis" target="1.8" />
       <module name="springboot-quick" target="1.8" />
+      <module name="startboot-day1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
