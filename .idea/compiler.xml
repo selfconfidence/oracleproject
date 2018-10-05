@@ -22,6 +22,7 @@
       <module name="jpa-3" target="1.5" />
       <module name="jpa-demo" target="1.5" />
       <module name="quartz-quick" target="1.5" />
+      <module name="repository-ssm" target="1.8" />
       <module name="shiro-search" target="1.5" />
       <module name="spring-mybatis" target="1.8" />
       <module name="springboot-quick" target="1.8" />
