@@ -8,6 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ojdbc14-10.2.0.1.0" level="project" />
+<<<<<<< HEAD
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -18,5 +19,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
   </component>
 </module>

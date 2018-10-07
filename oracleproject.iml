@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+<<<<<<< HEAD
   <component name="FacetManager">
     <facet type="javaeeApplication" name="javaEEApplication">
       <configuration>
@@ -9,6 +10,8 @@
       </configuration>
     </facet>
   </component>
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">

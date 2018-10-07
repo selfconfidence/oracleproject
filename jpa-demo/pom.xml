@@ -51,6 +51,7 @@
         </dependency>
     </dependencies>
 
+<<<<<<< HEAD
 
     <properties>
         <spring.version>4.2.4.RELEASE</spring.version>
@@ -196,4 +197,6 @@
         <!-- el end -->
     </dependencies>
 
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
 </project>

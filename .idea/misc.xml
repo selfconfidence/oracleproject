@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="FrameworkDetectionExcludesConfiguration">
     <file url="file://$PROJECT_DIR$/repository-ssm/overlays" />
     <file type="web" url="file://$PROJECT_DIR$/repository-ssm" />
     <file type="web" url="file://$PROJECT_DIR$/shiro-search" />
   </component>
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/jpa-demo/pom.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/springdatejpa-demo/pom.xml" />
         <option value="$PROJECT_DIR$/jpa-3/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-quick/pom.xml" />
@@ -17,6 +21,8 @@
         <option value="$PROJECT_DIR$/startboot-day1/pom.xml" />
         <option value="$PROJECT_DIR$/shiro-search/pom.xml" />
         <option value="$PROJECT_DIR$/quartz-quick/pom.xml" />
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
       </list>
     </option>
   </component>

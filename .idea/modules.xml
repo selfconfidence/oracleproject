@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/day-3/day-3.iml" filepath="$PROJECT_DIR$/day-3/day-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jpa-3/jpa-3.iml" filepath="$PROJECT_DIR$/jpa-3/jpa-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/jpa-demo/jpa-demo.iml" filepath="$PROJECT_DIR$/jpa-demo/jpa-demo.iml" />
@@ -12,6 +13,11 @@
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-quick/springboot-quick.iml" filepath="$PROJECT_DIR$/springboot-quick/springboot-quick.iml" />
       <module fileurl="file://$PROJECT_DIR$/startboot-day1/startboot-day1.iml" filepath="$PROJECT_DIR$/startboot-day1/startboot-day1.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/jpa-demo/jpa-demo.iml" filepath="$PROJECT_DIR$/jpa-demo/jpa-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" filepath="$PROJECT_DIR$/oraclejdbc/oraclejdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oracleproject.iml" filepath="$PROJECT_DIR$/oracleproject.iml" />
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
     </modules>
   </component>
 </project>

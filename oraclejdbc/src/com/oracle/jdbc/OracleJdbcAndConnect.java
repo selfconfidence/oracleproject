@@ -1,9 +1,16 @@
 package com.oracle.jdbc;
 
+<<<<<<< HEAD
 import oracle.jdbc.OracleTypes;
 import org.junit.Test;
 
 import java.sql.*;
+=======
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
 
 /**
  * @author misterWei
@@ -13,6 +20,7 @@ import java.sql.*;
 public class OracleJdbcAndConnect {
     public static void main(String[] args) throws Exception {
         Class.forName("oracle.jdbc.driver.OracleDriver");
+<<<<<<< HEAD
         String url = "jdbc:oracle:thin:@192.168.238.150:1521:xe";
         String userNanme = "manager";
         String password = "manager";
@@ -22,6 +30,17 @@ public class OracleJdbcAndConnect {
         while (executeQuery.next()) {
             System.out.println(executeQuery.getString("pid"));
             System.out.println(executeQuery.getString("pname"));
+=======
+        String url = "jdbc:oracle:thin:@192.168.238.144:1521:xe";
+        String userNanme = "system";
+        String password = "12345";
+        Connection connection = DriverManager.getConnection(url, userNanme, password);
+        Statement statement = connection.createStatement();
+        ResultSet executeQuery = statement.executeQuery("select * from student");
+        while (executeQuery.next()) {
+            System.out.println(executeQuery.getString("s_id"));
+            System.out.println(executeQuery.getString("s_name"));
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
 
         }
         connection.commit();
@@ -32,6 +51,7 @@ public class OracleJdbcAndConnect {
 
     }
 
+<<<<<<< HEAD
     @Test
     public void executeInsert() {
         try {
@@ -85,5 +105,7 @@ public class OracleJdbcAndConnect {
         }
 
     }
+=======
+>>>>>>> 7acc1e8aea13019c0fb70de8cb68196015aa90f9
 
 }
